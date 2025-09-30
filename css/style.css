@@ -1,0 +1,125 @@
+  body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('../imagenes/fondo.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+    }
+
+    .logo img {
+      height: 60px;
+    }
+
+    .social-icons a {
+      color: white;
+      margin-left: 15px;
+      font-size: 20px;
+      text-decoration: none;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px #000;
+    }
+	
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 40px 20px;
+    }
+
+    .gallery img {
+      width: 250px;
+      height: auto;
+      margin: 15px;
+      cursor: pointer;
+      border: 3px solid white;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Popup */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      color: black;
+      position: relative;
+    }
+
+    .popup-close {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    /* Formulario */
+    #contacto {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      max-width: 500px;
+      margin: 40px auto;
+      border-radius: 10px;
+    }
+
+    #contacto input, #contacto textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #contacto button {
+      background-color: #ffc107;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #contacto button:disabled {
+      background-color: #999;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.6em;
+      }
+
+      .gallery img {
+        width: 90%;
+      }
+    }

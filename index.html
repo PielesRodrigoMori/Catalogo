@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+  <title>Rodrigo Mori</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ </head>
+
+  
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="imagenes/LogoRodMori.png" alt="Logo Rodrigo Mori">
+    </div>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="#contacto"><i class="fas fa-envelope"></i></a>
+    </div>
+  </header>
+  <body>
+  <!-- Título -->
+  <h1>Rodrigo Mori : Elegancia, estilo y calidad</h1>
+
+  <!-- Galería -->
+  <div class="gallery">
+     <img src="imagenes/nut0101.png" class="gallery-img" alt="Abrigo Nutria" data-base="nut0101" onclick="openPopup(this)">
+     <img src="imagenes/lie0101.png" class="gallery-img" alt="Abrigo Liebre" data-base="lie0101" onclick="openPopup(this)">
+     <img src="imagenes/cab0101.png" class="gallery-img" alt="Abrigo Cabrito albi/negro" data-base="cab0101" onclick="openPopup(this)">
+     <img src="imagenes/cab0201.png" class="gallery-img" alt="Abrigo Cabrito gris" data-base="cab0201" onclick="openPopup(this)">
+     <img src="imagenes/ast0401.png" class="gallery-img" alt="Abrigo Astracan" data-base="ast0401" onclick="openPopup(this)">
+     <img src="imagenes/ast0101.png" class="gallery-img" alt="Abrigo Astracan" data-base="ast0101" onclick="openPopup(this)">
+     <img src="imagenes/ast0301.png" class="gallery-img" alt="Abrigo Astracan" data-base="ast0301" onclick="openPopup(this)">
+     <img src="imagenes/ast0201.png" class="gallery-img" alt="Abrigo Astracan" data-base="ast0201" onclick="openPopup(this)">
+	 <img src="imagenes/vis0201.png" class="gallery-img" alt="Abrigo Visón" data-base="vis0201" onclick="openPopup(this)">
+	 <img src="imagenes/vis0301.png" class="gallery-img" alt="Abrigo Visón" data-base="vis0301" onclick="openPopup(this)">
+	 <img src="imagenes/vis0101.png" class="gallery-img" alt="Abrigo Visón" data-base="vis0101" onclick="openPopup(this)">
+     <img src="imagenes/mus0101.png" class="gallery-img" alt="Abrigo Muskrat" data-base="mus0101" onclick="openPopup(this)">
+	 <img src="imagenes/mus0201.png" class="gallery-img" alt="Abrigo Muskrat" data-base="mus0201" onclick="openPopup(this)">
+     <img src="imagenes/zor0501.png" class="gallery-img" alt="Abrigo Zorro corto" data-base="zor0501" onclick="openPopup(this)">
+	 <img src="imagenes/zor0401.png" class="gallery-img" alt="Abrigo Zorro corto" data-base="zor0401" onclick="openPopup(this)">
+	 <img src="imagenes/zor0101.png" class="gallery-img" alt="Abrigo Zorro rojo" data-base="zor0101" onclick="openPopup(this)">
+     <img src="imagenes/zor0601.png" class="gallery-img" alt="Abrigo Zorro rojo capucha" data-base="zor0601" onclick="openPopup(this)">
+	 <img src="imagenes/zor0201.png" class="gallery-img" alt="Abrigo Zorro plateado" data-base="zor0201" onclick="openPopup(this)">
+    <!-- Agrega más imágenes según sea necesario -->
+  </div>
+
+   <!-- Formulario de contacto -->
+  <div id="contacto">
+    <h2>Contacto</h2>
+    <form id="formulario" onsubmit="enviarFormulario(event)">
+      <input type="text" id="nombre" placeholder="Nombre" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="tel" id="telefono" placeholder="Teléfono">
+      <textarea id="comentario" placeholder="Escribe tu mensaje aquí..." required></textarea>
+      <button type="submit" id="enviar" disabled>Enviar</button>
+    </form>
+  </div>
+  <div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="popup-close" onclick="closePopup()">&times;</span>
+    <h2 id="popup-title">Abrigo :</h2>
+    <p id="popup-code">Código: </p>
+    <p id="popup-description">Descripción: </p>
+    <div id="popup-images" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;"></div>
+  </div>
+</div>
+ <script src="script/script.js"></script>
+</body>
+</html>

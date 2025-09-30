@@ -1,0 +1,38 @@
+{
+  "ast0101": {
+    "imagen": "ast0101.jpg",
+    "titulo": "Astracán Café Marrón",
+    "codigo": "ast0101",
+    "descripcion": "Abrigo de astracán café de medio cuerpo"
+  },
+  "vis0301": {
+    "imagen": "vis0301.jpg",
+    "titulo": "Visón 3 cortes",
+    "codigo": "vis0301",
+    "descripcion": "Abrigo de visón de 3 largos opcionales"
+  },
+  "zor0101": {
+    "imagen": "zor0101.jpg",
+    "titulo": "Zorro rojo",
+    "codigo": "zor0101",
+    "descripcion": "Abrigo de zorro rojo medio cuerpo"
+  },
+  "mus0201": {
+    "imagen": "mus0201.jpg",
+    "titulo": "Muskrat largo",
+    "codigo": "mus0201",
+    "descripcion": "Abrigo de Muskrat largo estilo bata"
+  },
+  "vis0201": {
+    "imagen": "vis0201.jpg",
+    "titulo": "Visón negro",
+    "codigo": "vis0201",
+    "descripcion": "Abrigo de Visón negro medio cuerpo"
+  },
+  "zor0601": {
+    "imagen": "zor0601.jpg",
+    "titulo": "Zorro beige",
+    "codigo": "zor0601",
+    "descripcion": "Abrigo de Zorro beige con capucha"
+  }
+ }
