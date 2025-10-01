@@ -1,17 +1,4 @@
- //function openPopup() {
-  //    document.getElementById('popup').style.display = 'flex';
-  //  }
-
-  //  function closePopup() {
-   //   document.getElementById('popup').style.display = 'none';
-  //  }
-
-    const nombre = document.getElementById('nombre');
-    const email = document.getElementById('email');
-    const comentario = document.getElementById('comentario');
-    const enviar = document.getElementById('enviar');
-
-    function validarFormulario() {
+     function validarFormulario() {
       enviar.disabled = !(nombre.value.trim() && email.value.trim() && comentario.value.trim());
     }
 
@@ -19,23 +6,7 @@
     email.addEventListener('input', validarFormulario);
     comentario.addEventListener('input', validarFormulario);
 
-    function enviarFormulario(e) {
-      e.preventDefault();
-
-      const datos = {
-        nombre: nombre.value,
-        email: email.value,
-        telefono: document.getElementById('telefono').value,
-        comentario: comentario.value
-      };
-
-      // Simulación de envío
-      alert("Formulario enviado:\n" + JSON.stringify(datos, null, 2));
-
-      // Aquí iría el envío real con backend o servicio tipo Formspree o EmailJS
-    }
-     //let abrigoData = {};
-	 let abrigoData = {
+	let abrigoData = {
 	"nut0101": {
     "imagen": "nut0101.png",
     "titulo": "Nutria Negra",
@@ -191,5 +162,37 @@
   function closePopup() {
     document.getElementById('popup').style.display = 'none';
   }
+  function enviarFormulario(e) {
+  e.preventDefault();
+
+  const nombre = document.getElementById('nombre').value;
+  const email = document.getElementById('email').value;
+  const telefono = document.getElementById('telefono').value;
+  const comentario = document.getElementById('comentario').value;
+  
+  const templateParams = {
+    from_name: nombre,
+    from_email: email,
+    phone: telefono,
+    message: comentario,
+    subject:"Correo de contacto " + nombre + " - Teléfono : " + telefono
+  };
+
+    emailjs.send('service_eep36ct', 'template_9523ntc', templateParams)
+    .then(function(response) {
+      alert("Formulario enviado correctamente.");
+      console.log('SUCCESS!', response.status, response.text);
+	  // El método más sencillo y limpio es usar el método .reset() del elemento form.
+      if (formulario) {
+          formulario.reset(); 
+      }
+      // -------------------------------------
+
+    }, function(error) {
+      alert("Error al enviar el formulario.");
+      console.log('FAILED...', error);
+    });
+}
+
 
 

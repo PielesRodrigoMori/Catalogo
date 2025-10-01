@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
  
-  <title>Rodrigo Mori</title>
+  <title>PIELES Rodrigo Mori</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
  </head>
 
@@ -16,9 +16,9 @@
       <img src="imagenes/LogoRodMori.png" alt="Logo Rodrigo Mori">
     </div>
     <div class="social-icons">
-      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://wa.me/123456789" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://web.facebook.com/profile.php?id=61581538791651" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/rodri.mori/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/56938740056?text=Hola%20quiero%20preguntar%20sobre%20las%20pieles" target="_blank"><i class="fab fa-whatsapp"></i></a>
       <a href="#contacto"><i class="fas fa-envelope"></i></a>
     </div>
   </header>
@@ -52,7 +52,7 @@
    <!-- Formulario de contacto -->
   <div id="contacto">
     <h2>Contacto</h2>
-    <form id="formulario" onsubmit="enviarFormulario(event)">
+    <form id="formulario" >
       <input type="text" id="nombre" placeholder="Nombre" required>
       <input type="email" id="email" placeholder="Email" required>
       <input type="tel" id="telefono" placeholder="Teléfono">
@@ -70,5 +70,14 @@
   </div>
 </div>
  <script src="script/script.js"></script>
+ <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"> </script>
+ <script>
+  (function () {
+    emailjs.init("dMcB-xVZhskwC7uy6"); // Reemplaza con tu Public Key
+  })();
+ </script>
+ <script>
+  document.getElementById('formulario').addEventListener('submit', enviarFormulario);
+</script>
 </body>
 </html>
