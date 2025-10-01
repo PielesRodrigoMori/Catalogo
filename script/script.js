@@ -180,7 +180,7 @@
 
     emailjs.send('service_eep36ct', 'template_9523ntc', templateParams)
     .then(function(response) {
-      alert("Formulario enviado correctamente.");
+      alert("Consulta enviada correctamente.");
       console.log('SUCCESS!', response.status, response.text);
 	  // El método más sencillo y limpio es usar el método .reset() del elemento form.
       if (formulario) {
