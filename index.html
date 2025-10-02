@@ -53,9 +53,9 @@
   <div id="contacto">
     <h2>Contacto</h2>
     <form id="formulario" >
-      <input type="text" id="nombre" placeholder="Nombre" required>
-      <input type="email" id="email" placeholder="Email" required>
-      <input type="tel" id="telefono" placeholder="Teléfono">
+      <input type="text" id="nombre" placeholder="Nombre (Obligatorio)" required>
+      <input type="email" id="email" placeholder="Email (Obligatorio)" required>
+      <input type="tel" id="telefono" placeholder="Teléfono (Opcional)">
       <textarea id="comentario" placeholder="Escribe tu mensaje aquí..." required></textarea>
       <button type="submit" id="enviar" disabled>Enviar</button>
     </form>
@@ -76,6 +76,8 @@
     emailjs.init("dMcB-xVZhskwC7uy6"); // Reemplaza con tu Public Key
   })();
  </script>
- 
-</body>
+ <script>
+  document.getElementById('formulario').addEventListener('submit', enviarFormulario);
+</script>
+ </body>
 </html>
