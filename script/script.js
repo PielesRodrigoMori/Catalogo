@@ -75,7 +75,7 @@
   },
   "mus0101": {
     "imagen": "mus0101.png",
-    "titulo": "Muskrat corto",
+    "titulo": "Muskrat medio cuerpo",
     "codigo": "mus0101",
     "descripcion": "Abrigo de Muskrat medio cuerpo"
   },
