@@ -37,6 +37,12 @@
     "codigo": "ast0401",
     "descripcion": "Abrigo de astracán negro largo "
   },
+   "ast0101": {
+    "imagen": "ast0101.png",
+    "titulo": "Astracán corto",
+    "codigo": "ast0101",
+    "descripcion": "Abrigo de astracán corto"
+  },
   "ast0301": {
     "imagen": "ast0301.png",
     "titulo": "Astracán Negro",
@@ -99,9 +105,9 @@
   },
    "zor0601": {
     "imagen": "zor0601.png",
-    "titulo": "Zorro beige",
+    "titulo": "Zorro con capucha",
     "codigo": "zor0601",
-    "descripcion": "Abrigo de Zorro beige con capucha"
+    "descripcion": "Abrigo de Zorro con capucha"
   },
   "zor0201": {
     "imagen": "zor0201.png",
