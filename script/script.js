@@ -9,9 +9,9 @@
 	let abrigoData = {
 	"nut0101": {
     "imagen": "nut0101.png",
-    "titulo": "Nutria Negra",
-    "codigo": "ast0101",
-    "descripcion": "Abrigo de nutria ajustado"
+    "titulo": "Nutria",
+    "codigo": "nut0101",
+    "descripcion": "Nutria semi-largo"
   },
   "lie0101": {
     "imagen": "lie0101.png",
@@ -39,9 +39,9 @@
   },
    "ast0101": {
     "imagen": "ast0101.png",
-    "titulo": "Astracán corto",
+    "titulo": "Astracán café",
     "codigo": "ast0101",
-    "descripcion": "Abrigo de astracán corto"
+    "descripcion": "Abrigo de astracán café"
   },
   "ast0301": {
     "imagen": "ast0301.png",
@@ -51,15 +51,15 @@
   },
    "ast0201": {
     "imagen": "ast0201.png",
-    "titulo": "Astracán Negro cuello café",
+    "titulo": "Astracán Negro cuello visón",
     "codigo": "ast0201",
-    "descripcion": "Abrigo de astracán negro medio cuerpo"
+    "descripcion": "Abrigo de astracán negro cuello visón"
   },
   "vis0201": {
-    "imagen": "vis0201.png",
-    "titulo": "Visón corto",
-    "codigo": "vis0201",
-    "descripcion": "Abrigo de visón medio cuerpo"
+    "imagen": "cas0201.png",
+    "titulo": "Castor",
+    "codigo": "cas0201",
+    "descripcion": "Abrigo de Castor medio cuerpo"
   },
   "vis0301": {
     "imagen": "vis0301.png",
@@ -89,17 +89,17 @@
     "imagen": "zor0501.png",
     "titulo": "Zorro corto",
     "codigo": "zor0501",
-    "descripcion": "Abrigo de zorro medio cuerpo"
+    "descripcion": "Abrigo de zorro corto ajustado"
   },
   "zor0401": {
     "imagen": "zor0401.png",
-    "titulo": "Zorro corto",
+    "titulo": "Zorro medio cuerpo",
     "codigo": "zor0401",
     "descripcion": "Abrigo de zorro medio cuerpo"
   },
   "zor0101": {
     "imagen": "zor0101.png",
-    "titulo": "Zorro corto",
+    "titulo": "Zorro medio cuerpo",
     "codigo": "zor0101",
     "descripcion": "Abrigo de zorro rojo medio cuerpo"
   },
@@ -107,13 +107,13 @@
     "imagen": "zor0601.png",
     "titulo": "Zorro con capucha",
     "codigo": "zor0601",
-    "descripcion": "Abrigo de Zorro con capucha"
+    "descripcion": "Abrigo de Zorro con capucha medio cuerpo ajustado"
   },
   "zor0201": {
     "imagen": "zor0201.png",
     "titulo": "Zorro plateado",
     "codigo": "zor0201",
-    "descripcion": "Abrigo de Zorro plateado"
+    "descripcion": "Abrigo de Zorro plateado medio cuerpo ajustado"
   }
  };
 
