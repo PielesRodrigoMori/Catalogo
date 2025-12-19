@@ -55,10 +55,10 @@
     "codigo": "ast0201",
     "descripcion": "Abrigo de astracán negro cuello visón"
   },
-  "cas0201": {
-    "imagen": "cas0201.png",
+  "cas0101": {
+    "imagen": "cas0101.png",
     "titulo": "Castor",
-    "codigo": "cas0201",
+    "codigo": "cas0101",
     "descripcion": "Abrigo de Castor medio cuerpo"
   },
   "vis0301": {
@@ -114,6 +114,54 @@
     "titulo": "Zorro plateado",
     "codigo": "zor0201",
     "descripcion": "Abrigo de Zorro plateado medio cuerpo ajustado"
+  },
+  "zor0701": {
+    "imagen": "zor0701.png",
+    "titulo": "Zorro largo",
+    "codigo": "zor0701",
+    "descripcion": "Abrigo Zorro largo"
+  },
+  "mus0401": {
+    "imagen": "mus0401.png",
+    "titulo": "Muskrat",
+    "codigo": "mus0401",
+    "descripcion": "Muskrat semi largo"
+  },
+  "con0101": {
+    "imagen": "con0101.png",
+    "titulo": "Conejo",
+    "codigo": "con0101",
+    "descripcion": "Conejo corto"
+  },
+   "pot0101": {
+    "imagen": "pot0101.png",
+    "titulo": "Potro",
+    "codigo": "pot0101",
+    "descripcion": "Potro medio cuerpo"
+  },
+  "mus0601": {
+    "imagen": "mus0601.png",
+    "titulo": "Muskrat",
+    "codigo": "mus0601",
+    "descripcion": "Abrigo Muskrat largo"
+  },
+   "mus0501": {
+    "imagen": "mus0501.png",
+    "titulo": "Muskrat",
+    "codigo": "mus0501",
+    "descripcion": "Abrigo Muskrat medio cuerpo"
+  },
+  "est0101": {
+    "imagen": "est0101.png",
+    "titulo": "Estola Zorro",
+    "codigo": "est0101",
+    "descripcion": "Estola de Zorro"
+  },
+  "est0201": {
+    "imagen": "est0201.png",
+    "titulo": "Estola Visón",
+    "codigo": "est0201",
+    "descripcion": "Estola de Visón albino"
   }
  };
 
