@@ -55,10 +55,10 @@
     "codigo": "ast0201",
     "descripcion": "Abrigo de astracán negro cuello visón"
   },
-  "cas0101": {
-    "imagen": "cas0101.png",
+  "cas0201": {
+    "imagen": "cas0201.png",
     "titulo": "Castor",
-    "codigo": "cas0101",
+    "codigo": "cas0201",
     "descripcion": "Abrigo de Castor medio cuerpo"
   },
   "vis0301": {
