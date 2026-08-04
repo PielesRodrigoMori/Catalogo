@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Pieles Rodrigo Mori</title>
+  <style>
+    /* Estilos generales con estética de lujo */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #0d0f12;
+      background-image: radial-gradient(#26211c 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: #f5f5f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* Contenedor del formulario */
+    .contact-container {
+      background: #1c1815;
+      border: 2px solid #8f6b28;
+      border-radius: 8px;
+      padding: 30px 25px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(212, 175, 55, 0.1);
+      position: relative;
+    }
+
+    .contact-container h2 {
+      font-size: 1.8rem;
+      text-align: center;
+      color: #d4af37;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      padding-bottom: 10px;
+    }
+
+    /* Estilos de los campos del formulario */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      width: 100%;
+      background: #0d0f12;
+      border: 1px solid #423325;
+      border-radius: 4px;
+      padding: 12px 15px;
+      color: #f5f5f5;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #888;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #d4af37;
+      box-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
+      background: #121418;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    /* Botón de envío */
+    button[type="submit"] {
+      background: #d4af37;
+      color: #000;
+      font-weight: bold;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border: none;
+      padding: 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+    }
+
+    button[type="submit"]:hover:not(:disabled) {
+      background: #f1c40f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    }
+
+    button[type="submit"]:disabled {
+      background: #444;
+      color: #888;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* Mensaje de estado al enviar */
+    .status-msg {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .status-msg.success {
+      color: #2ecc71;
+    }
+
+    .status-msg.error {
+      color: #e74c3c;
+    }
+
+    /* Copyright en el pie */
+    footer {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #777;
+    }
+
+    /* Adaptabilidad Móvil */
+    @media (max-width: 480px) {
+      .contact-container {
+        padding: 20px 15px;
+      }
+      .contact-container h2 {
+        font-size: 1.4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CONTENEDOR DEL FORMULARIO -->
+  <div class="contact-container" id="contacto">
+    <h2>Contacto</h2>
+    <form id="formulario">
+      <input type="text" id="nombre" name="nombre" placeholder="Nombre (Obligatorio)" required>
+      <input type="email" id="email" name="email" placeholder="Email (Obligatorio)" required>
+      <input type="tel" id="telefono" name="telefono" placeholder="Teléfono (Opcional)">
+      <textarea id="comentario" name="comentario" placeholder="Escribe tu mensaje aquí..." required></textarea>
+      
+      <button type="submit" id="enviar" disabled>Enviar Mensaje</button>
+      <div id="statusMsg" class="status-msg"></div>
+    </form>
+  </div>
+
+  
+
+  <!-- LIBRERÍA EMAILJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  
+  <script>
+    // Inicialización de EmailJS con tu Public Key
+    (function () {
+      emailjs.init("dMcB-xVZhskwC7uy6");
+    })();
+
+    const form = document.getElementById('formulario');
+    const enviarBtn = document.getElementById('enviar');
+    const statusMsg = document.getElementById('statusMsg');
+
+    // Habilitar el botón sólo cuando los campos requeridos tengan contenido válido
+    function validarFormulario() {
+      const nombreValido = document.getElementById('nombre').value.trim() !== '';
+      const emailValido = document.getElementById('email').checkValidity();
+      const comentarioValido = document.getElementById('comentario').value.trim() !== '';
+
+      enviarBtn.disabled = !(nombreValido && emailValido && comentarioValido);
+    }
+
+    form.addEventListener('input', validarFormulario);
+
+    // Función para procesar el envío del formulario mediante EmailJS
+    function enviarFormulario(e) {
+      e.preventDefault();
+
+      enviarBtn.disabled = true;
+      enviarBtn.innerText = 'Enviando...';
+      statusMsg.style.display = 'none';
+
+      // NOTA: Reemplaza 'YOUR_SERVICE_ID' y 'YOUR_TEMPLATE_ID' con tus IDs de EmailJS
+      emailjs.sendForm('service_eep36ct', 'template_9523ntc', form)
+        .then(function() {
+          statusMsg.className = 'status-msg success';
+          statusMsg.innerText = '¡Mensaje enviado con éxito!';
+          statusMsg.style.display = 'block';
+          form.reset();
+          enviarBtn.innerText = 'Enviar Mensaje';
+          enviarBtn.disabled = true;
+        }, function(error) {
+          console.error('Error al enviar:', error);
+          statusMsg.className = 'status-msg error';
+          statusMsg.innerText = 'Ocurrió un error al enviar el mensaje. Intenta nuevamente.';
+          statusMsg.style.display = 'block';
+          enviarBtn.innerText = 'Enviar Mensaje';
+          enviarBtn.disabled = false;
+        });
+    }
+
+    form.addEventListener('submit', enviarFormulario);
+  </script>
+
+</body>
+</html>

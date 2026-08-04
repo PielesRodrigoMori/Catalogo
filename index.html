@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pieles Rodrigo Mori - Presentación</title>
+  <style>
+    /* Estilos generales y fondo */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: #0d0f12;
+      color: #d4af37; /* Dorado elegante */
+      font-family: 'Georgia', serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      padding-top: 80px; /* Espacio para el header fijo */
+    }
+
+    /* Topbar y Encabezado */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(13, 15, 18, 0.95);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+      backdrop-filter: blur(5px);
+      z-index: 500;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand-title h1 {
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+      line-height: 1;
+    }
+    .brand-title p {
+      font-size: 0.75rem;
+      color: #ccc;
+      letter-spacing: 1px;
+    }
+
+    /* Menú de acceso directo */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .nav-item {
+      color: #d4af37;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 4px;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: none;
+      font-family: inherit;
+    }
+
+    .nav-item:hover {
+      border-color: #d4af37;
+      background: rgba(212, 175, 55, 0.1);
+    }
+
+    .nav-item svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    /* Botón reproducir pequeño */
+    .play-btn-small {
+      background: #d4af37;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    .play-btn-small:hover {
+      transform: scale(1.05);
+      background: #f1c40f;
+    }
+
+    /* Contenedor principal para el grid de 4 videos */
+    .video-container {
+      position: relative;
+      width: 90vw;
+      max-width: 1000px;
+      height: 70vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 15px;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    /* Estilo de cada recuadro de video */
+    .video-box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border: 2px solid rgba(212, 175, 55, 0.3);
+      border-radius: 8px;
+      transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 1;
+      background: #000;
+    }
+
+    .video-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Clase que se activa con JS para agrandar el video al centro */
+    .video-box.active {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 80%;
+      z-index: 100;
+      border-color: #d4af37;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+    }
+
+    /* Subtítulos en la parte inferior */
+    .subtitles {
+      position: absolute;
+      bottom: 20px;
+      width: 80%;
+      max-width: 800px;
+      text-align: center;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: 20px;
+      z-index: 200;
+    }
+
+    /* Ventana emergente (Modal) */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal-content {
+  position: relative;
+  width: 95%;
+  max-width: 1100px; /* Más ancho para el libro */
+  height: 92vh;       /* Más alto para abarcar las fotos completas */
+  background: #0d0f12;
+  border: 2px solid #d4af37;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.4);
+}
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: #d4af37;
+      color: #000;
+      border: none;
+      font-weight: bold;
+      font-size: 1.2rem;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1001;
+      line-height: 1;
+    }
+
+    .modal-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+	@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .nav-item {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+
+  body {
+    padding-top: 110px; /* Otorga más margen debido al header de dos filas */
+  }
+
+  .video-container {
+    height: 60vh;
+  }
+}
+footer a,
+footer a:visited,
+footer a:hover,
+footer a:active {
+    color: inherit;
+    text-decoration: underline;
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand-title">
+      <h1>Pieles Rodrigo Mori</h1>
+      <p>Hecho en Chile</p>
+    </div>
+
+    <nav class="nav-links">
+      <button class="play-btn-small" id="startBtn">▶ Reproducir</button>
+      
+    <!-- Redes Sociales externas -->
+      <a href="https://web.facebook.com/profile.php?id=61581538791651" target="_blank" class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H7.5v-3H10V9.5C10 7.02 11.49 5.65 13.72 5.65c1.07 0 2.19.19 2.19.19v2.41h-1.24c-1.23 0-1.61.76-1.61 1.54V12h2.72l-.43 3h-2.29v6.8c4.56-.93 8-4.96 8-9.8z"/></svg>
+        Facebook
+      </a>
+
+      <a href="https://www.instagram.com/rodri.mori/" target="_blank" class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+
+      <a href="https://wa.me/56982006244?text=Hola%20quiero%20preguntar%20sobre%20las%20pieles" target="_blank" class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.205 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+        WhatsApp
+      </a>
+
+      <!-- Modales emergentes -->
+      <button class="nav-item" onclick="openModal('catalogo.html')">
+        <svg viewBox="0 0 24 24"><path d="M19 2H5c-1.11 0-2 .9-2 2v16c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H5V4h2v7l2.5-1.5L12 11V4h7v16z"/></svg>
+        Catálogo
+      </button>
+
+      <button class="nav-item" onclick="openModal('contacto.html')">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Contacto
+      </button>
+    </nav>
+  </header>
+
+  <audio id="narrativeAudio" src="Introduccion.mp3"></audio>
+
+  <div class="video-container">
+    <div class="video-box" id="box1">
+      <video id="v1" src="ChicodelZorroRojo.mp4" loop muted playsinline></video>
+    </div>
+    <div class="video-box" id="box2">
+      <video id="v2" src="HombreMuskrat.mp4" loop muted playsinline></video>
+    </div>
+    <div class="video-box" id="box3">
+      <video id="v3" src="Mujer_en_establo.mp4" loop muted playsinline></video>
+    </div>
+    <div class="video-box" id="box4">
+      <video id="v4" src="Mujer_elegante_Astracan.mp4" loop muted playsinline></video>
+    </div>
+  </div>
+
+  <div class="subtitles" id="subtitles">Cargando experiencia...</div>
+ 
+
+  <!-- Contenedor del Modal / Emergente -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeModal()">×</button>
+      <iframe id="modalIframe" src=""></iframe>
+    </div>
+  </div>
+   <footer>
+    <span>
+        © Copyright
+        <a href="https://www.sofycomtech.cl"
+           target="_blank"
+           rel="noopener noreferrer">
+            Sofycomtech
+        </a>
+        2026
+    </span>
+</footer>
+  <script>
+    const audio = document.getElementById('narrativeAudio');
+    const startBtn = document.getElementById('startBtn');
+    const subtitles = document.getElementById('subtitles');
+
+    const boxes = [
+      document.getElementById('box1'),
+      document.getElementById('box2'),
+      document.getElementById('box3'),
+      document.getElementById('box4')
+    ];
+
+    const videos = [
+      document.getElementById('v1'),
+      document.getElementById('v2'),
+      document.getElementById('v3'),
+      document.getElementById('v4')
+    ];
+
+    const sequence = [
+      {
+        time: 0,
+        boxIndex: -1,
+        text: ""
+      },
+      {
+        time: 4,
+        boxIndex: 0,
+        text: "Rodrigo Mori brings you the unexpected. We are reviving a way of creating fashion,"
+      },
+      {
+        time: 11,
+        boxIndex: 1,
+        text: "putting our utmost effort into every creation, prioritizing quality and aesthetic detail in each one"
+      },
+      {
+        time: 17,
+        boxIndex: 2,
+        text: "putting our utmost effort into every creation, prioritizing quality and aesthetic detail in each one, "
+      },
+      {
+        time: 23,
+        boxIndex: 3,
+        text: " which have remained under a rigorous storage and care system."
+      },
+      {
+        time: 29,
+        boxIndex: -1,
+        text: ""
+      }
+    ];
+
+    let isPlaying = false;
+
+    function startExperience() {
+      if (isPlaying) return;
+      
+      // Iniciar videos en loop silenciados
+      videos.forEach(v => v.play().catch(() => {}));
+
+      // Intentar reproducir audio
+      audio.play().then(() => {
+        isPlaying = true;
+        startBtn.innerHTML = "⏸ Pausar";
+      }).catch(err => {
+        // Bloqueo de Autoplay por el navegador
+        console.warn("Autoplay bloqueado por el navegador. Se requiere clic del usuario.");
+        subtitles.textContent = "Haz clic en ▶ Reproducir en el header para iniciar.";
+      });
+    }
+
+    // Event listener del botón en la barra superior
+    startBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play();
+        videos.forEach(v => v.play());
+        isPlaying = true;
+        startBtn.innerHTML = "⏸ Pausar";
+      } else {
+        audio.pause();
+        videos.forEach(v => v.pause());
+        isPlaying = false;
+        startBtn.innerHTML = "▶ Reproducir";
+      }
+    });
+
+    // Control mediante el tiempo del audio
+    audio.addEventListener('timeupdate', () => {
+      const currentTime = audio.currentTime;
+
+      let currentStep = sequence[0];
+      for (let i = 0; i < sequence.length; i++) {
+        if (currentTime >= sequence[i].time) {
+          currentStep = sequence[i];
+        }
+      }
+
+      subtitles.textContent = currentStep.text;
+
+      boxes.forEach((box, index) => {
+        if (index === currentStep.boxIndex) {
+          box.classList.add('active');
+        } else {
+          box.classList.remove('active');
+        }
+      });
+    });
+
+    // Reiniciar al finalizar
+    audio.addEventListener('ended', () => {
+      boxes.forEach(b => b.classList.remove('active'));
+      subtitles.textContent = "Pieles Rodrigo Mori - High Fashion";
+      startBtn.innerHTML = "▶ Reproducir";
+      isPlaying = false;
+    });
+
+    // Modales para emergentes
+    function openModal(url) {
+      document.getElementById('modalIframe').src = url;
+      document.getElementById('modalOverlay').classList.add('open');
+      
+      // Pausar la presentación si la ventana emergente se abre
+      if(isPlaying) {
+        audio.pause();
+        videos.forEach(v => v.pause());
+        isPlaying = false;
+        startBtn.innerHTML = "▶ Reproducir";
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.getElementById('modalIframe').src = '';
+    }
+
+    // Autoejecución al ingresar por primera vez
+    window.addEventListener('DOMContentLoaded', () => {
+      startExperience();
+    });
+  </script>
+</body>
+</html>

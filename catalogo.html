@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CATÁLOGO Pieles RODRIGO MORI</title>
+    <style>
+        /* =========================================================
+           1. ESTILOS GENERALES Y FONDO
+           ========================================================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            /* Fondo neutro oscuro con textura sutil */
+            background-color: #141210;
+            background-image: radial-gradient(#26211c 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* =========================================================
+           2. ESTRUCTURA DEL LIBRO VIEJO / TOMO DE LUJO
+           ========================================================= */
+        .book-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            /* Efecto de volumen 3D para el libro completo */
+            perspective: 1000px;
+        }
+
+        .catalog-container {
+            position: relative;
+            width: 100%;
+            background: #1c1815;
+            /* Encuadernación con borde exterior de cuero/madera oscura y filete de oro */
+            border: 8px solid #2e2218;
+            outline: 2px solid #8f6b28;
+            border-radius: 4px 18px 18px 4px;
+            /* Sombras complejas para simular profundidad y canto de hojas */
+            box-shadow: 
+                -12px 12px 25px rgba(0,0,0,0.8),
+                /* Canto de las páginas del libro a la derecha */
+                15px 10px 0px #110e0c,
+                16px 11px 0px #a38f6c,
+                18px 12px 0px #2a231d,
+                20px 14px 2px #8f7952,
+                22px 15px 15px rgba(0,0,0,0.9);
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Lomo del libro (Lado izquierdo) */
+        .book-spine {
+            width: 32px;
+            background: linear-gradient(to right, #0f0a07 0%, #3a2a1d 30%, #20150d 70%, #0d0805 100%);
+            border-right: 2px solid #8f6b28;
+            box-shadow: inset -3px 0 8px rgba(0,0,0,0.8);
+            position: relative;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            z-index: 5;
+        }
+
+        /* Costuras y relieve de oro en el lomo */
+        .book-spine::before, .book-spine::after {
+            content: '';
+            width: 80%;
+            height: 4px;
+            background: #c5a059;
+            box-shadow: 0 0 4px #8f6b28;
+            border-radius: 2px;
+        }
+
+        /* Contenido del libro */
+        .book-content {
+            flex-grow: 1;
+            position: relative;
+            background: radial-gradient(circle at center, #231e1a 0%, #15120f 100%);
+            /* Sombras internas para simular el pliegue central del libro */
+            box-shadow: inset 15px 0 20px rgba(0,0,0,0.7);
+        }
+
+        /* =========================================================
+           3. CARRUSEL
+           ========================================================= */
+        .carousel-wrapper {
+            position: relative;
+            width: 100%;
+            height: 580px;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            animation: pageTurn 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .carousel-slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Efecto visual de paso de página */
+        @keyframes pageTurn {
+            0% { 
+                opacity: 0.2; 
+                transform: rotateY(-8deg) scale(0.98); 
+                transform-origin: left center;
+            }
+            100% { 
+                opacity: 1; 
+                transform: rotateY(0deg) scale(1);
+            }
+        }
+
+        /* --- PORTADA (CUBIERTA DEL LIBRO) --- */
+        .cover-page {
+            background: radial-gradient(circle, #332418 0%, #170e08 100%);
+            padding: 40px 30px;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            /* Borde interno decorativo tipo encuadernación victoriana */
+            border: 1px solid rgba(197, 160, 89, 0.3);
+            margin: 10px;
+            width: calc(100% - 20px);
+            height: calc(100% - 20px);
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        .cover-frame {
+            border: 2px double #c5a059;
+            padding: 40px 30px;
+            border-radius: 4px;
+            background: rgba(0, 0, 0, 0.25);
+            max-width: 550px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* Adornos de esquinas para la portada */
+        .cover-frame::before {
+            content: '✦';
+            position: absolute;
+            top: 5px;
+            left: 10px;
+            color: #c5a059;
+            font-size: 14px;
+        }
+        .cover-frame::after {
+            content: '✦';
+            position: absolute;
+            bottom: 5px;
+            right: 10px;
+            color: #c5a059;
+            font-size: 14px;
+        }
+
+        .cover-title-sub {
+            font-size: 1.1rem;
+            letter-spacing: 7px;
+            text-transform: uppercase;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-family: 'Georgia', serif;
+        }
+
+        .cover-title-main {
+            font-size: 2.6rem;
+            font-weight: normal;
+            letter-spacing: 3px;
+            color: #f7f3e9;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.9), 0 0 10px rgba(197, 160, 89, 0.2);
+        }
+
+        .cover-divider {
+            width: 80px;
+            height: 2px;
+            background: #c5a059;
+            margin: 0 auto 20px auto;
+        }
+
+        .cover-subtitle {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: #b3a28d;
+            letter-spacing: 1px;
+        }
+
+        /* --- VISTA DE ABRIGOS (PÁGINAS INTERIORES) --- */
+        .item-card {
+            width: 100%;
+            height: 100%;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .img-container {
+            position: relative;
+            max-width: 100%;
+            max-height: 80%;
+            overflow: hidden;
+            border: 4px solid #2d241d;
+            border-radius: 4px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7), 0 0 0 1px #8f6b28;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #000;
+        }
+
+        .img-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 14px 30px rgba(0,0,0,0.9), 0 0 12px rgba(197, 160, 89, 0.4);
+        }
+
+        .img-container img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .zoom-hint {
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            background: rgba(20, 15, 10, 0.85);
+            color: #d4af37;
+            border: 1px solid #8f6b28;
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-family: sans-serif;
+            pointer-events: none;
+        }
+
+        .item-caption {
+            margin-top: 18px;
+            font-size: 1.15rem;
+            color: #e5dace;
+            letter-spacing: 1px;
+            text-align: center;
+            font-style: italic;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        /* --- CONTROLES Y NAVEGACIÓN --- */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(25, 18, 12, 0.85);
+            color: #c5a059;
+            border: 1px solid #8f6b28;
+            font-size: 22px;
+            padding: 14px 16px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .nav-btn:hover {
+            background: #c5a059;
+            color: #1a120b;
+            box-shadow: 0 0 12px rgba(197, 160, 89, 0.6);
+        }
+
+        .prev-btn { left: 15px; }
+        .next-btn { right: 15px; }
+
+        .indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 0;
+            background: #110d0a;
+            border-top: 1px solid #2e2218;
+        }
+
+        .dot {
+            width: 9px;
+            height: 9px;
+            background-color: #423325;
+            border: 1px solid #634d38;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .dot.active {
+            background-color: #c5a059;
+            border-color: #fff;
+            transform: scale(1.35);
+            box-shadow: 0 0 6px #c5a059;
+        }
+
+        /* =========================================================
+           4. MODAL EMERGENTE (LIGHTBOX)
+           ========================================================= */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 4, 3, 0.94);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal.open {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 82vh;
+            border: 3px solid #8f6b28;
+            border-radius: 4px;
+            box-shadow: 0 0 35px rgba(0,0,0,0.9);
+            object-fit: contain;
+        }
+
+        .modal-caption {
+            color: #d4af37;
+            margin-top: 15px;
+            font-size: 1.2rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #c5a059;
+            font-size: 42px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover {
+            color: #ffffff;
+        }
+
+        /* =========================================================
+           5. ADAPTABILIDAD RESPONSIVA
+           ========================================================= */
+        @media (max-width: 650px) {
+            .book-spine {
+                width: 18px;
+            }
+            .carousel-wrapper {
+                height: 460px;
+            }
+            .cover-frame {
+                padding: 20px 15px;
+            }
+            .cover-title-main {
+                font-size: 1.8rem;
+            }
+            .cover-title-sub {
+                font-size: 0.85rem;
+                letter-spacing: 4px;
+            }
+            .img-container img {
+                max-height: 280px;
+            }
+            .nav-btn {
+                padding: 10px 12px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MARCO GENERAL DEL LIBRO -->
+    <div class="book-wrapper">
+        <div class="catalog-container">
+            
+            <!-- LOMO DEL LIBRO EN CUERO / ORO -->
+            <div class="book-spine"></div>
+
+            <!-- CUERPO PRINCIPAL DEL LIBRO -->
+            <div class="book-content">
+                <div class="carousel-wrapper" id="carouselWrapper">
+                    
+                    <!-- PORTADA (TAPA INICIAL) -->
+                    <div class="carousel-slide active">
+                        <div class="cover-page">
+                            <div class="cover-frame">
+                                <div class="cover-title-sub">CATÁLOGO DE PIELES</div>
+                                <h1 class="cover-title-main">RODRIGO MORI</h1>
+                                <div class="cover-divider"></div>
+                                <p class="cover-subtitle">Colección Exclusiva de Alta Costura</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LOS ABRIGOS SE CARGAN DINÁMICAMENTE CON JAVASCRIPT -->
+
+                </div>
+
+                <!-- BOTONES DE NAVEGACIÓN -->
+                <button class="nav-btn prev-btn" id="prevBtn">&#10094;</button>
+                <button class="nav-btn next-btn" id="nextBtn">&#10095;</button>
+
+                <!-- INDICADORES (PUNTOS DE PÁGINA) -->
+                <div class="indicators" id="indicators"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- PANTALLA EMERGENTE / MODAL -->
+    <div class="modal" id="imageModal">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImg" alt="Vista ampliada">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+
+    <!-- SCRIPT DE FUNCIONALIDAD -->
+    <script>
+        /* =========================================================
+           CONFIGURACIÓN DE ELEMENTOS DEL CATÁLOGO
+           ========================================================= */
+        const catalogItems = [
+            {
+                src: 'ast0101.webp',
+                title: 'Abrigo Corto de piel Astrakán Marrón (ast0101)'
+            },
+            {
+                src: 'ast0201.webp',
+                title: 'Abrigo de piel Astrakán Negro con Cuello de Visón (ast0201)'
+            },
+            {
+                src: 'ast0301.webp',
+                title: 'Abrigo Largo de piel Astrakán Negro (ast0301)'
+            },
+            {
+                src: 'cab0101.webp',
+                title: 'Abrigo de piel Cabrito Jaspeada (cab0101)'
+            },
+			{
+                src: 'coi0101.webp',
+                title: 'Abrigo de piel coipo plateado (coi0101)'
+            },
+			{
+                src: 'mus0601.webp',
+                title: 'Abrigo de piel Muskrat largo (mus0601)'
+            },
+			{
+                src: 'mus0501.webp',
+                title: 'Abrigo de piel Muskrat medio cuerpo (mus0501)'
+            },
+			{
+                src: 'mus0201.webp',
+                title: 'Abrigo estilo bata de piel Muskrat (mus0201)'
+            },
+			{
+                src: 'mus0301.webp',
+                title: 'Abrigo de piel Muskrat (mus0301)'
+            },
+			{
+                src: 'vis0101.webp',
+                title: 'Abrigo de piel Visón negro largo (vis0101)'
+            },
+			{
+                src: 'vis0301.webp',
+                title: 'Prenda de piel Visón de 3 largos (vis0301)'
+            },
+			{
+                src: 'zor0201.webp',
+                title: 'Abrigo de piel Zorro plateado (zor0201)'
+            },
+			{
+                src: 'zor0101.webp',
+                title: 'Abrigo de piel Zorro rojo (zor0101)'
+            },
+			{
+                src: 'zor0501.webp',
+                title: 'Chaqueta de piel Zorro rojo (zor0501)'
+            },
+			{
+                src: 'zor0601.webp',
+                title: 'Abrigo de piel Zorro con capucha (zor0601)'
+            },
+			{
+                src: 'zor0701.webp',
+                title: 'Abrigo de piel Zorro largo (zor0701)'
+            }
+			
+        ];
+
+        /* =========================================================
+           LÓGICA DEL CARRUSEL
+           ========================================================= */
+        const wrapper = document.getElementById('carouselWrapper');
+        const indicatorsContainer = document.getElementById('indicators');
+        let currentIndex = 0;
+
+        function initCatalog() {
+            catalogItems.forEach((item) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.innerHTML = `
+                    <div class="item-card" onclick="openModal('${item.src}', '${item.title}')">
+                        <div class="img-container">
+                            <img src="${item.src}" alt="${item.title}">
+                            <div class="zoom-hint">🔍 Ampliar</div>
+                        </div>
+                        <div class="item-caption">${item.title}</div>
+                    </div>
+                `;
+                wrapper.appendChild(slide);
+            });
+
+            // Generar indicadores
+            const totalSlides = catalogItems.length + 1; // +1 por la portada
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('div');
+                dot.className = `dot ${i === 0 ? 'active' : ''}`;
+                dot.onclick = () => goToSlide(i);
+                indicatorsContainer.appendChild(dot);
+            }
+        }
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.dot');
+
+            if (index >= slides.length) currentIndex = 0;
+            else if (index < 0) currentIndex = slides.length - 1;
+            else currentIndex = index;
+
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === currentIndex);
+            });
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => showSlide(currentIndex + 1));
+        document.getElementById('prevBtn').addEventListener('click', () => showSlide(currentIndex - 1));
+
+        /* =========================================================
+           LÓGICA DEL MODAL EMERGENTE
+           ========================================================= */
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalCaption = document.getElementById('modalCaption');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        function openModal(src, title) {
+            modal.classList.add('open');
+            modalImg.src = src;
+            modalCaption.textContent = title;
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+        }
+
+        closeModalBtn.onclick = closeModal;
+        modal.onclick = (e) => {
+            if (e.target === modal) closeModal();
+        };
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+
+        // Inicializar el proyecto
+        initCatalog();
+    </script>
+</body>
+</html>
