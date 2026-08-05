@@ -192,32 +192,57 @@
     form.addEventListener('input', validarFormulario);
 
     // Función para procesar el envío del formulario mediante EmailJS
-    function enviarFormulario(e) {
-      e.preventDefault();
+    // Función para procesar el envío del formulario mediante EmailJS
+function enviarFormulario(e) {
+  e.preventDefault();
 
+  enviarBtn.disabled = true;
+  enviarBtn.innerText = 'Enviando...';
+  statusMsg.style.display = 'none';
+
+  // Obtener los valores ingresados en el formulario
+  const nombreVal = document.getElementById('nombre').value.trim();
+  const emailVal = document.getElementById('email').value.trim();
+  const telefonoVal = document.getElementById('telefono').value.trim() || 'No especificado';
+  const comentarioVal = document.getElementById('comentario').value.trim();
+
+  // Construir asunto y cuerpo según tus requerimientos
+  const asuntoDinamico = `Correo de contacto Sitio Web ${nombreVal}`;
+  
+  const cuerpoDinamico = 
+    `Un usuario acaba de pedir contacto : ${nombreVal}\n` +
+    `Email: ${emailVal}\n` +
+    `Teléfono: ${telefonoVal}\n\n` +
+    `Mensaje:\n${comentarioVal}`;
+
+  // Objeto de parámetros que se envía a la plantilla de EmailJS
+  const templateParams = {
+    subject: asuntoDinamico,      // Asunto personalizado
+    message: cuerpoDinamico,      // Cuerpo estructurado
+    nombre: nombreVal,            // Por si los usas individualmente en la plantilla
+    email: emailVal,
+    telefono: telefonoVal,
+    comentario: comentarioVal
+  };
+
+  // Envío mediante emailjs.send en lugar de sendForm
+  emailjs.send('service_eep36ct', 'template_9523ntc', templateParams)
+    .then(function() {
+      statusMsg.className = 'status-msg success';
+      statusMsg.innerText = '¡Mensaje enviado con éxito!';
+      statusMsg.style.display = 'block';
+      form.reset();
+      enviarBtn.innerText = 'Enviar Mensaje';
       enviarBtn.disabled = true;
-      enviarBtn.innerText = 'Enviando...';
-      statusMsg.style.display = 'none';
-
-      // NOTA: Reemplaza 'YOUR_SERVICE_ID' y 'YOUR_TEMPLATE_ID' con tus IDs de EmailJS
-      emailjs.sendForm('service_eep36ct', 'template_9523ntc', form)
-        .then(function() {
-          statusMsg.className = 'status-msg success';
-          statusMsg.innerText = '¡Mensaje enviado con éxito!';
-          statusMsg.style.display = 'block';
-          form.reset();
-          enviarBtn.innerText = 'Enviar Mensaje';
-          enviarBtn.disabled = true;
-        }, function(error) {
-          console.error('Error al enviar:', error);
-          statusMsg.className = 'status-msg error';
-          statusMsg.innerText = 'Ocurrió un error al enviar el mensaje. Intenta nuevamente.';
-          statusMsg.style.display = 'block';
-          enviarBtn.innerText = 'Enviar Mensaje';
-          enviarBtn.disabled = false;
-        });
-    }
-
+    }, function(error) {
+      console.error('Error al enviar:', error);
+      statusMsg.className = 'status-msg error';
+      statusMsg.innerText = 'Ocurrió un error al enviar el mensaje. Intenta nuevamente.';
+      statusMsg.style.display = 'block';
+      enviarBtn.innerText = 'Enviar Mensaje';
+      enviarBtn.disabled = false;
+    });
+}
     form.addEventListener('submit', enviarFormulario);
   </script>
 
